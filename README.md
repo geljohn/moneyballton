@@ -1,19 +1,18 @@
-# moneyballton
+# Moneyballton: Identifying Big 5 Attacking Establishment
+A data-driven recruitment pipeline identifying high-upside U23 attacking prospects, modeled on Brighton & Hove Albion's acquisition philosophy.
 
-Project Specification: 
+**📊 [View the Live Tableau Interactive Dashboard Here](https://public.tableau.com/views/Moneyballton/Dashboard1)**
 
-Core Research Question: Can a transparent, data-driven methodology using historical performance metrics identify U23 wingers who successfully replace the specific on-pitch tactical output of Kaoru Mitoma?
+### Executive Summary
+This project shifts away from subjective "player-replacement" models to a testable historical backtest. By evaluating over 4,000 player-season records across a 4-year validation window, the pipeline identifies young wide attackers most likely to establish themselves in Europe's Big 5 leagues (defined as accumulating 4,000+ top-flight minutes).
 
-The Case Study: Identifying the tactical requirements of Mitoma's role at Brighton (e.g., progressive carrying, final-third entry, goal threat) rather than looking for a direct statistical clone.
+### Technical Architecture
+* **Extraction:** Python (soccerdata/FBref) scraping historical and live 2025/26 data.
+* **Storage & Transformation:** MySQL relational database managing historical cohort firewalls and live scouting data.
+* **Modeling:** Heuristic, explainable weights (Context-Adjusted Production × Age Runway × Current Opportunity) avoiding black-box ML to ensure stakeholder buy-in.
+* **Presentation:** Tableau interactive decision funnel and player deep-dive.
 
-Target Profile: Under 23 years old (U23) at the time of the simulated query.
-
-League Scope: FBref's Big 5 and "Next 14" development leagues to ensure free access to high-quality advanced metrics.
-
-Data Threshold: Minimum 1200 minutes played in the target domestic season.
-
-Definition of Success: Within 3-5 years post-discovery, the player transfers to a Big 5 league, becomes a regular starter (2000+ mins/season), or significantly increases their market value.
-
-The Backtest Test: Using data available exclusively from the 2018–2020 seasons, the model will shortlist U23 targets. The model's predictive validity will be measured against the real-world 2021–2026 career trajectories of the top identified players.
-
-Infrastructure: Python (pandas), FBref data via scraping libraries, and Power BI for the final dashboard.
+### Project Documentation
+For a detailed breakdown of the engineering choices, constraints, and validation metrics, please review:
+1. [The Decision Log](./docs/Decision_Log.md): Outlines architectural pivots, including handling missing upstream API data via defensive SQL/Tableau patching.
+2. [Methodology & Validation](./docs/Methodology_and_Validation.md): Details the 70% out-of-sample hit rate and the logic behind the step-up tax.
